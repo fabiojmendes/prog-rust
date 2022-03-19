@@ -9,3 +9,8 @@ edition = "2021"
 
 [profile.dev]
 opt-level = 1
+debug = 2
+
+[profile.release]
+# debug = 1
+panic = "abort"
