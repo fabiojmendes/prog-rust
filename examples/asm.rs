@@ -1,10 +1,15 @@
-use std::{error::Error, env};
+use std::{env, process};
 
-fn main() -> Result<(), Box<dyn Error>> {
-    let size = env::args().count();
-    if size >= 2 {
-        Ok(())
+#[inline(never)]
+fn test_func(i: i32) {
+    if i > 1 {
+        process::exit(i);
     } else {
-        Err("error")?
+        process::exit(0);
     }
+}
+
+fn main() {
+    let size = env::args().count();
+    test_func(size as i32);
 }
